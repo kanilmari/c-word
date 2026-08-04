@@ -1,0 +1,67 @@
+[
+  {
+    "id": "level-001",
+    "title": "Aamun valo",
+    "place": "Turun saaristo",
+    "letters": ["S", "A", "N", "O", "M", "A", "T"],
+    "crosswordCandidates": [
+      "SANOMA", "NOSTAA", "MAASTO", "AATOS", "MASTO", "MONTA", "OSATA", "OSTAA",
+      "SANOA", "ANSA", "MATO", "OTSA", "SANA", "SATA", "SOMA", "SOTA", "TASO", "MAA", "OMA", "OSA"
+    ],
+    "targetWordCount": 14,
+    "hintCost": 100
+  },
+  {
+    "id": "level-002",
+    "title": "Kirkas polku",
+    "place": "Koli",
+    "letters": ["K", "A", "S", "T", "E", "I", "N", "A"],
+    "crosswordCandidates": [
+      "KAISTA", "SAANTI", "TAKSIA", "AINES", "ANKEA", "ASTIA", "ETANA", "ETSIN", "KANSA",
+      "KANSI", "KANTA", "KASTE", "KATSE", "NISKA", "SAATE", "TAIKA", "TAKIA", "TAKSA",
+      "TAKSI", "AIKA", "AINA", "AINE", "AITA", "ASIA", "ASTE", "ENSI", "ITSE", "KANA",
+      "KISA", "KITA", "SANA", "SATA", "SIKA"
+    ],
+    "targetWordCount": 15,
+    "hintCost": 100
+  },
+  {
+    "id": "level-003",
+    "title": "Tyyni ilta",
+    "place": "Saimaa",
+    "letters": ["P", "E", "L", "A", "S", "I", "T"],
+    "crosswordCandidates": [
+      "PILATES", "LASITE", "SAPELI", "LAITE", "LAPSI", "LASTI", "LIPAS", "LISTA", "PELTI",
+      "PESTI", "PISTE", "PITSA", "SILTA", "ASTE", "ASTI", "ILTA", "ITSE", "LASI", "PELI",
+      "PETI", "PILA", "SALI", "TILA", "TIE"
+    ],
+    "targetWordCount": 14,
+    "hintCost": 100
+  },
+  {
+    "id": "level-004",
+    "title": "Avoin ulappa",
+    "place": "Hanko",
+    "letters": ["V", "A", "L", "O", "I", "S", "A"],
+    "crosswordCandidates": [
+      "SALAOVI", "VALOISA", "OVAALI", "SALVIA", "LAIVA", "LOIVA", "SAALI", "SAAVI", "VAALI",
+      "VAASI", "VALAS", "VALIO", "AASI", "AISA", "ALAS", "ASIA", "AVIO", "LASI",
+      "LAVA", "LOVI", "OIVA", "SALA", "SALI", "SALO", "SAVI", "SOLA", "VALA", "VALO",
+      "VASA", "VISA", "ILO", "ISO", "OSA", "OVI", "VAI", "VOI"
+    ],
+    "targetWordCount": 15,
+    "hintCost": 100
+  },
+  {
+    "id": "level-005",
+    "title": "Pohjoinen tuuli",
+    "place": "Kilpisjärvi",
+    "letters": ["T", "U", "U", "L", "I", "N", "E", "N"],
+    "crosswordCandidates": [
+      "TUULINEN", "TULINEN", "TUNNELI", "UUTINEN", "LUINEN", "LINTU", "NIELU", "TUNNE",
+      "TUULI", "ELIN", "TULI", "UUNI", "ETU", "UNI", "UTU", "TIE"
+    ],
+    "targetWordCount": 12,
+    "hintCost": 100
+  }
+]

@@ -1,0 +1,828 @@
+[
+  {
+    "id": "level-001",
+    "title": "Aamun valo",
+    "place": "Turun saaristo",
+    "letters": [
+      "S",
+      "A",
+      "N",
+      "O",
+      "M",
+      "A",
+      "T"
+    ],
+    "grid": {
+      "rows": 10,
+      "columns": 10
+    },
+    "words": [
+      {
+        "answer": "MAASTO",
+        "row": 6,
+        "column": 4,
+        "direction": "horizontal"
+      },
+      {
+        "answer": "NOSTAA",
+        "row": 4,
+        "column": 7,
+        "direction": "vertical"
+      },
+      {
+        "answer": "MASTO",
+        "row": 5,
+        "column": 5,
+        "direction": "vertical"
+      },
+      {
+        "answer": "OTSA",
+        "row": 8,
+        "column": 4,
+        "direction": "horizontal"
+      },
+      {
+        "answer": "ANSA",
+        "row": 4,
+        "column": 6,
+        "direction": "horizontal"
+      },
+      {
+        "answer": "AATOS",
+        "row": 3,
+        "column": 9,
+        "direction": "vertical"
+      },
+      {
+        "answer": "OMA",
+        "row": 2,
+        "column": 6,
+        "direction": "vertical"
+      },
+      {
+        "answer": "SANOA",
+        "row": 2,
+        "column": 3,
+        "direction": "horizontal"
+      },
+      {
+        "answer": "SATA",
+        "row": 2,
+        "column": 3,
+        "direction": "vertical"
+      },
+      {
+        "answer": "SOTA",
+        "row": 4,
+        "column": 1,
+        "direction": "horizontal"
+      },
+      {
+        "answer": "OSATA",
+        "row": 3,
+        "column": 1,
+        "direction": "vertical"
+      },
+      {
+        "answer": "MAA",
+        "row": 0,
+        "column": 7,
+        "direction": "vertical"
+      },
+      {
+        "answer": "MATO",
+        "row": 7,
+        "column": 0,
+        "direction": "horizontal"
+      },
+      {
+        "answer": "SOMA",
+        "row": 0,
+        "column": 5,
+        "direction": "horizontal"
+      }
+    ],
+    "bonusWords": [
+      "MA",
+      "NO",
+      "SA",
+      "SO",
+      "NAM",
+      "OAS",
+      "OSA",
+      "OTA",
+      "TAA",
+      "ANOA",
+      "ANTO",
+      "MANA",
+      "NATA",
+      "NATO",
+      "SAMA",
+      "SANA",
+      "SATO",
+      "TAAS",
+      "TAOS",
+      "TASO",
+      "ASTMA",
+      "MANTO",
+      "MONTA",
+      "NASTA",
+      "NATSA",
+      "OMATA",
+      "OSTAA",
+      "SANTA",
+      "SAOTA",
+      "SONTA",
+      "TASAN",
+      "MAATON",
+      "MONTAA",
+      "SAANTO",
+      "SAMOTA",
+      "SANOMA"
+    ],
+    "hintCost": 100,
+    "allowRepeatedLetterNode": false
+  },
+  {
+    "id": "level-002",
+    "title": "Kirkas polku",
+    "place": "Koli",
+    "letters": [
+      "K",
+      "A",
+      "S",
+      "T",
+      "E",
+      "I",
+      "N",
+      "A"
+    ],
+    "grid": {
+      "rows": 10,
+      "columns": 10
+    },
+    "words": [
+      {
+        "answer": "KASTE",
+        "row": 6,
+        "column": 5,
+        "direction": "horizontal"
+      },
+      {
+        "answer": "AINES",
+        "row": 3,
+        "column": 9,
+        "direction": "vertical"
+      },
+      {
+        "answer": "ASTIA",
+        "row": 3,
+        "column": 5,
+        "direction": "horizontal"
+      },
+      {
+        "answer": "TAKSI",
+        "row": 3,
+        "column": 7,
+        "direction": "vertical"
+      },
+      {
+        "answer": "KISA",
+        "row": 6,
+        "column": 5,
+        "direction": "vertical"
+      },
+      {
+        "answer": "ETANA",
+        "row": 9,
+        "column": 3,
+        "direction": "horizontal"
+      },
+      {
+        "answer": "SAATE",
+        "row": 5,
+        "column": 3,
+        "direction": "vertical"
+      },
+      {
+        "answer": "ITSE",
+        "row": 5,
+        "column": 1,
+        "direction": "horizontal"
+      },
+      {
+        "answer": "KANSI",
+        "row": 1,
+        "column": 1,
+        "direction": "vertical"
+      },
+      {
+        "answer": "KANSA",
+        "row": 1,
+        "column": 1,
+        "direction": "horizontal"
+      },
+      {
+        "answer": "SANA",
+        "row": 0,
+        "column": 5,
+        "direction": "vertical"
+      },
+      {
+        "answer": "AIKA",
+        "row": 7,
+        "column": 0,
+        "direction": "horizontal"
+      },
+      {
+        "answer": "ENSI",
+        "row": 0,
+        "column": 3,
+        "direction": "vertical"
+      },
+      {
+        "answer": "KANA",
+        "row": 6,
+        "column": 0,
+        "direction": "vertical"
+      },
+      {
+        "answer": "SATA",
+        "row": 0,
+        "column": 5,
+        "direction": "horizontal"
+      }
+    ],
+    "bonusWords": [
+      "AI",
+      "EI",
+      "IN",
+      "NE",
+      "SA",
+      "SE",
+      "TE",
+      "AIE",
+      "ANE",
+      "ANI",
+      "ASE",
+      "ATK",
+      "EKA",
+      "IEN",
+      "IES",
+      "KAI",
+      "KAS",
+      "KAT",
+      "KEN",
+      "KIS",
+      "SEI",
+      "SEN",
+      "TAA",
+      "TAE",
+      "TAI",
+      "TIE",
+      "TSE",
+      "AASI",
+      "AATE",
+      "AINA",
+      "AINE",
+      "AISA",
+      "AITA",
+      "AKNE",
+      "AKTI",
+      "ANIS",
+      "ANSA",
+      "ANTI",
+      "ASIA",
+      "ASKI",
+      "ASTE",
+      "ASTI",
+      "INKA",
+      "KAIT",
+      "KANI",
+      "KASA",
+      "KASI",
+      "KATE",
+      "KINA",
+      "KITA",
+      "NATA",
+      "SAKE",
+      "SANE",
+      "SANI",
+      "SIKA",
+      "TAAS",
+      "TAIN",
+      "TAKA",
+      "TASE",
+      "TEAK",
+      "TIES",
+      "TINA",
+      "ANKEA",
+      "ASTIN",
+      "ESTIN",
+      "ETSIN",
+      "KAITA",
+      "KANTA",
+      "KASTI",
+      "KATSE",
+      "KESTI",
+      "KETSI",
+      "NASTA",
+      "NATSA",
+      "NATSI",
+      "NISKA",
+      "SAATI",
+      "SAETA",
+      "SAITA",
+      "SAKEA",
+      "SANKA",
+      "SANTA",
+      "SEITA",
+      "SEKTI",
+      "SITEN",
+      "TAAIN",
+      "TAIKA",
+      "TAKIA",
+      "TAKSA",
+      "TANKA",
+      "TASAN",
+      "TINKA",
+      "ASETIN",
+      "ETAANI",
+      "KAISTA",
+      "KINATA",
+      "KISATA",
+      "NIKSAA",
+      "SAANTI",
+      "SEITAN",
+      "SEKAAN",
+      "SIKANA",
+      "STAAKI",
+      "TAAKSE",
+      "TAASEN",
+      "TAKSIA",
+      "TANKEA",
+      "TANSKA",
+      "TASAIN",
+      "ASTENIA",
+      "KAITSEA",
+      "SANKETA",
+      "SINKATA",
+      "SITKAAN",
+      "ANKEASTI"
+    ],
+    "hintCost": 100,
+    "allowRepeatedLetterNode": false
+  },
+  {
+    "id": "level-003",
+    "title": "Tyyni ilta",
+    "place": "Saimaa",
+    "letters": [
+      "P",
+      "E",
+      "L",
+      "A",
+      "S",
+      "I",
+      "T"
+    ],
+    "grid": {
+      "rows": 10,
+      "columns": 10
+    },
+    "words": [
+      {
+        "answer": "LASITE",
+        "row": 4,
+        "column": 1,
+        "direction": "horizontal"
+      },
+      {
+        "answer": "SAPELI",
+        "row": 1,
+        "column": 6,
+        "direction": "vertical"
+      },
+      {
+        "answer": "LAPSI",
+        "row": 6,
+        "column": 2,
+        "direction": "horizontal"
+      },
+      {
+        "answer": "LISTA",
+        "row": 2,
+        "column": 2,
+        "direction": "horizontal"
+      },
+      {
+        "answer": "LASTI",
+        "row": 0,
+        "column": 4,
+        "direction": "vertical"
+      },
+      {
+        "answer": "PELI",
+        "row": 0,
+        "column": 2,
+        "direction": "horizontal"
+      },
+      {
+        "answer": "PILA",
+        "row": 3,
+        "column": 6,
+        "direction": "horizontal"
+      },
+      {
+        "answer": "LAITE",
+        "row": 3,
+        "column": 8,
+        "direction": "vertical"
+      },
+      {
+        "answer": "ILTA",
+        "row": 0,
+        "column": 9,
+        "direction": "vertical"
+      },
+      {
+        "answer": "LASI",
+        "row": 6,
+        "column": 2,
+        "direction": "vertical"
+      },
+      {
+        "answer": "ITSE",
+        "row": 8,
+        "column": 0,
+        "direction": "horizontal"
+      },
+      {
+        "answer": "SALI",
+        "row": 6,
+        "column": 5,
+        "direction": "vertical"
+      },
+      {
+        "answer": "PITSA",
+        "row": 9,
+        "column": 4,
+        "direction": "horizontal"
+      },
+      {
+        "answer": "TIE",
+        "row": 7,
+        "column": 0,
+        "direction": "vertical"
+      }
+    ],
+    "bonusWords": [
+      "AI",
+      "EI",
+      "SA",
+      "SE",
+      "TE",
+      "AIE",
+      "ALE",
+      "ALI",
+      "APE",
+      "ASE",
+      "ELI",
+      "IES",
+      "LEI",
+      "LIE",
+      "PAI",
+      "PAS",
+      "SEI",
+      "TAE",
+      "TAI",
+      "TSE",
+      "ALPI",
+      "APSI",
+      "ASPI",
+      "ASTE",
+      "ASTI",
+      "EPIS",
+      "LAPE",
+      "LATI",
+      "PETI",
+      "PITA",
+      "SIAL",
+      "TALI",
+      "TASE",
+      "TELA",
+      "TELI",
+      "TIES",
+      "TILA",
+      "ALTIS",
+      "LESTI",
+      "LIPAS",
+      "LITSA",
+      "PAISE",
+      "PALTE",
+      "PELTI",
+      "PESTI",
+      "PETSI",
+      "PISTE",
+      "SEITA",
+      "SILAT",
+      "SILTA",
+      "TAPSI",
+      "TESLA",
+      "TILSA",
+      "TISLE",
+      "ALITSE",
+      "PAISTE",
+      "PILATES"
+    ],
+    "hintCost": 100,
+    "allowRepeatedLetterNode": false
+  },
+  {
+    "id": "level-004",
+    "title": "Avoin ulappa",
+    "place": "Hanko",
+    "letters": [
+      "V",
+      "A",
+      "L",
+      "O",
+      "I",
+      "S",
+      "A"
+    ],
+    "grid": {
+      "rows": 9,
+      "columns": 9
+    },
+    "words": [
+      {
+        "answer": "LAIVA",
+        "row": 5,
+        "column": 3,
+        "direction": "horizontal"
+      },
+      {
+        "answer": "LOIVA",
+        "row": 3,
+        "column": 5,
+        "direction": "vertical"
+      },
+      {
+        "answer": "SAALI",
+        "row": 7,
+        "column": 3,
+        "direction": "horizontal"
+      },
+      {
+        "answer": "VAALI",
+        "row": 3,
+        "column": 7,
+        "direction": "vertical"
+      },
+      {
+        "answer": "ALAS",
+        "row": 4,
+        "column": 3,
+        "direction": "vertical"
+      },
+      {
+        "answer": "LOVI",
+        "row": 3,
+        "column": 5,
+        "direction": "horizontal"
+      },
+      {
+        "answer": "ISO",
+        "row": 1,
+        "column": 6,
+        "direction": "vertical"
+      },
+      {
+        "answer": "SALVIA",
+        "row": 1,
+        "column": 2,
+        "direction": "horizontal"
+      },
+      {
+        "answer": "ILO",
+        "row": 0,
+        "column": 4,
+        "direction": "vertical"
+      },
+      {
+        "answer": "OSA",
+        "row": 6,
+        "column": 1,
+        "direction": "horizontal"
+      },
+      {
+        "answer": "ASIA",
+        "row": 0,
+        "column": 2,
+        "direction": "vertical"
+      },
+      {
+        "answer": "SOLA",
+        "row": 5,
+        "column": 1,
+        "direction": "vertical"
+      },
+      {
+        "answer": "VAI",
+        "row": 8,
+        "column": 0,
+        "direction": "horizontal"
+      },
+      {
+        "answer": "VOI",
+        "row": 2,
+        "column": 0,
+        "direction": "horizontal"
+      },
+      {
+        "answer": "LAVA",
+        "row": 0,
+        "column": 0,
+        "direction": "vertical"
+      }
+    ],
+    "bonusWords": [
+      "AI",
+      "OI",
+      "SA",
+      "SO",
+      "ALA",
+      "ALI",
+      "AVO",
+      "IVA",
+      "OAS",
+      "OVI",
+      "VIA",
+      "AASI",
+      "AISA",
+      "AIVO",
+      "ALIO",
+      "ALVI",
+      "AVIO",
+      "LASI",
+      "OIVA",
+      "OLAS",
+      "OLVI",
+      "SALA",
+      "SALI",
+      "SALO",
+      "SAVI",
+      "SAVO",
+      "SIAL",
+      "VALA",
+      "VALO",
+      "VASA",
+      "VISA",
+      "ALIAS",
+      "SAAVI",
+      "SALVA",
+      "VAASI",
+      "VALAS",
+      "VALIO",
+      "VALOS",
+      "VASOA",
+      "VIOLA",
+      "OVAALI",
+      "SALVOA",
+      "SILAVA",
+      "SLAAVI",
+      "SALAOVI",
+      "VALOISA"
+    ],
+    "hintCost": 100,
+    "allowRepeatedLetterNode": false
+  },
+  {
+    "id": "level-005",
+    "title": "Pohjoinen tuuli",
+    "place": "Kilpisjärvi",
+    "letters": [
+      "T",
+      "U",
+      "U",
+      "L",
+      "I",
+      "N",
+      "E",
+      "N"
+    ],
+    "grid": {
+      "rows": 9,
+      "columns": 9
+    },
+    "words": [
+      {
+        "answer": "LUINEN",
+        "row": 1,
+        "column": 0,
+        "direction": "horizontal"
+      },
+      {
+        "answer": "LINTU",
+        "row": 1,
+        "column": 0,
+        "direction": "vertical"
+      },
+      {
+        "answer": "NIELU",
+        "row": 0,
+        "column": 2,
+        "direction": "vertical"
+      },
+      {
+        "answer": "TUULI",
+        "row": 4,
+        "column": 0,
+        "direction": "horizontal"
+      },
+      {
+        "answer": "TIE",
+        "row": 3,
+        "column": 4,
+        "direction": "vertical"
+      },
+      {
+        "answer": "UNI",
+        "row": 0,
+        "column": 5,
+        "direction": "vertical"
+      },
+      {
+        "answer": "ETU",
+        "row": 5,
+        "column": 4,
+        "direction": "horizontal"
+      },
+      {
+        "answer": "UTU",
+        "row": 3,
+        "column": 6,
+        "direction": "vertical"
+      },
+      {
+        "answer": "TULI",
+        "row": 5,
+        "column": 5,
+        "direction": "vertical"
+      },
+      {
+        "answer": "TUULINEN",
+        "row": 8,
+        "column": 1,
+        "direction": "horizontal"
+      },
+      {
+        "answer": "TULINEN",
+        "row": 2,
+        "column": 8,
+        "direction": "vertical"
+      },
+      {
+        "answer": "UUNI",
+        "row": 0,
+        "column": 5,
+        "direction": "horizontal"
+      }
+    ],
+    "bonusWords": [
+      "EI",
+      "IN",
+      "NE",
+      "TE",
+      "ELI",
+      "IEN",
+      "ITU",
+      "LEI",
+      "LEU",
+      "LIE",
+      "LUU",
+      "TIU",
+      "ELIN",
+      "ENIN",
+      "LITU",
+      "LUTI",
+      "NELI",
+      "NENU",
+      "NUTI",
+      "TELI",
+      "TENU",
+      "UUTE",
+      "LUNNI",
+      "TUNNE",
+      "UTELU",
+      "ETUILU",
+      "LUTUNEN",
+      "TUNNELI",
+      "UTUINEN",
+      "UUTINEN"
+    ],
+    "hintCost": 100,
+    "allowRepeatedLetterNode": false
+  }
+]
