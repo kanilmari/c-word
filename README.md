@@ -40,13 +40,9 @@ Vite näyttää paikallisen osoitteen terminaalissa. Kehityspalvelin kuuntelee o
 
 ## Pelin testaaminen
 
-Julkaistua selainversiota voi pelata osoitteessa:
+Peli käynnistyy paikallisesti komennolla `npm run dev`. Avaa Viten näyttämä osoite selaimessa; samassa lähiverkossa olevan puhelimen voi avata Viten näyttämästä verkko-osoitteesta.
 
-<https://kanilmari.github.io/c-word/>
-
-Paikallisesti peli käynnistyy komennolla `npm run dev`. Avaa Viten näyttämä osoite selaimessa; samassa lähiverkossa olevan puhelimen voi avata Viten näyttämästä verkko-osoitteesta.
-
-GitHub Pages -versio rakennetaan käsin `docs/`-hakemistoon komennolla `npm run build:pages`. Sivusto julkaistaan `main`-haaran `/docs`-hakemistosta ilman GitHub Actions -työnkulkuja.
+Julkinen lähdekoodi on osoitteessa <https://github.com/kanilmari/c-word>. GitHub Pages ei ole käytössä, koska GitHub toteuttaa myös haarasta julkaisemisen sisäisellä Actions-työnkululla ja tässä projektissa ei käytetä GitHub Actionsia.
 
 ## Rakentaminen ja testit
 
@@ -56,9 +52,6 @@ npm run build
 
 # Kenttien generointi lähdedatasta
 npm run generate:levels
-
-# GitHub Pages -version rakentaminen docs/-hakemistoon
-npm run build:pages
 
 # Pelilogiikan ja IndexedDB-tallennuksen yksikkötestit
 npm test
@@ -72,8 +65,6 @@ npm run test:e2e
 # Tuotantoversion Service Workerilla ajettava offline-testi
 npm run test:pwa
 
-# GitHub Pages -version offline-testi /c-word/-polussa
-npm run test:pages
 ```
 
 Playwright-testit muodostavat sanan sekä Pointer Events -vedolla että rajatulla näppäimistöllä, löytävät bonus-sanan, tarkistavat ylläpitäjätilan navigoinnin ja maksuttoman vihjeen, päivittävät sivun sekä varmistavat IndexedDB:stä palautuvan edistymisen. Erillinen PWA-testi rakentaa tuotantoversion, odottaa Service Workerin aktivoitumista, katkaisee selainkontekstin verkkoyhteyden ja lataa pelin uudelleen.

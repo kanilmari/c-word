@@ -36,7 +36,6 @@ Kaikki seuraavat tarkistukset läpäisivät 4.8.2026:
 - `npm run build`
 - `npm run test:e2e`: 3 Playwright-testiä
 - `npm run test:pwa`: tuotantoversion offline-uudelleenlataus
-- `npm run test:pages`: GitHub Pages -version offline-uudelleenlataus `/c-word/`-polussa
 - `npm run cap:sync`: web-resurssit synkronoitu Android- ja iOS-projekteihin
 
 Lisäksi Chromiumilla tarkistettiin:
@@ -61,7 +60,7 @@ Pienen näytön tarkistuksessa löydetty ylläpitäjämerkin kutistuminen korjat
 
 ## Nimi, julkaisu ja palautettavuus
 
-Sovelluksen näkyvä nimi on `C-Word`, npm- ja GitHub-nimi `c-word`, natiivipakettitunniste `fi.cword.app` ja IndexedDB-tietokanta `c-word-db`. Julkinen GitHub Pages -versio rakennetaan käsin `docs/`-hakemistoon ilman GitHub Actionsia.
+Sovelluksen näkyvä nimi on `C-Word`, npm- ja GitHub-nimi `c-word`, natiivipakettitunniste `fi.cword.app` ja IndexedDB-tietokanta `c-word-db`. Julkinen lähdekoodirepositorio on `https://github.com/kanilmari/c-word`. GitHub Pages ei ole käytössä, koska myös haarajulkaisu käynnistää GitHubin sisäisen Actions-työnkulun.
 
 Ennen varmennus- ja julkaisutyötä tehtiin lähdekoodivarmuuskopio:
 
