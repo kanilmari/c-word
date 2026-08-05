@@ -56,3 +56,22 @@ export function evaluateGuess(rawGuess: string, level: LevelData, current: Level
 export function isLevelComplete(level: LevelData, progress: LevelProgress): boolean {
   return level.words.every(({ answer }) => progress.solvedWords.includes(answer))
 }
+
+export function completedCrosswordInitials(level: LevelData, solvedWords: readonly string[]): Set<string> {
+  const solved = new Set(solvedWords)
+  const wordsByInitial = new Map<string, string[]>()
+
+  level.words.forEach(({ answer }) => {
+    const initial = answer[0]
+    if (!initial) return
+    const words = wordsByInitial.get(initial) ?? []
+    words.push(answer)
+    wordsByInitial.set(initial, words)
+  })
+
+  return new Set(
+    [...wordsByInitial.entries()]
+      .filter(([, words]) => words.every((word) => solved.has(word)))
+      .map(([initial]) => initial)
+  )
+}

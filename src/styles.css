@@ -528,6 +528,18 @@ input:focus-visible {
 
 :root[data-theme="dark"] .letter-node { color: #f8f3e8; }
 
+.letter-node.is-crossword-initial-complete:not(.is-selected) {
+  color: #103b2c;
+  background: #b9f1d2;
+  box-shadow: 0 0 0 3px rgba(78, 187, 137, .25), 0 0 20px rgba(41, 166, 112, .72);
+}
+
+:root[data-theme="dark"] .letter-node.is-crossword-initial-complete:not(.is-selected) {
+  color: #f4fff9;
+  background: #155844;
+  box-shadow: 0 0 0 3px rgba(111, 231, 174, .2), 0 0 22px rgba(89, 224, 160, .58);
+}
+
 .letter-node.is-selected {
   transform: translate(-50%, -50%) scale(1.07);
   color: #fff;
@@ -596,6 +608,20 @@ input:focus-visible {
   font-weight: 900;
   box-shadow: 0 3px 0 rgba(24, 86, 82, .13);
   cursor: pointer;
+}
+
+.limited-keyboard__letters button.is-crossword-initial-complete {
+  color: #103b2c;
+  background: #b9f1d2;
+  border-color: #58b68a;
+  box-shadow: 0 3px 0 rgba(25, 111, 74, .28), 0 0 16px rgba(41, 166, 112, .48);
+}
+
+:root[data-theme="dark"] .limited-keyboard__letters button.is-crossword-initial-complete {
+  color: #f4fff9;
+  background: #155844;
+  border-color: #69c99b;
+  box-shadow: 0 3px 0 rgba(5, 35, 27, .65), 0 0 17px rgba(89, 224, 160, .42);
 }
 
 .limited-keyboard__letters button.is-used { opacity: .24; transform: translateY(2px); }
@@ -737,6 +763,8 @@ input:focus-visible {
   :root:not([data-theme]) .level-heading { color: #f8f3e8; }
   :root:not([data-theme]) .letter-wheel { background: radial-gradient(circle at 35% 28%, #36545d, #173842 68%, #102c36); border-color: rgba(255,255,255,.22); }
   :root:not([data-theme]) .letter-node { color: #f8f3e8; }
+  :root:not([data-theme]) .letter-node.is-crossword-initial-complete:not(.is-selected) { color: #f4fff9; background: #155844; box-shadow: 0 0 0 3px rgba(111, 231, 174, .2), 0 0 22px rgba(89, 224, 160, .58); }
+  :root:not([data-theme]) .limited-keyboard__letters button.is-crossword-initial-complete { color: #f4fff9; background: #155844; border-color: #69c99b; box-shadow: 0 3px 0 rgba(5, 35, 27, .65), 0 0 17px rgba(89, 224, 160, .42); }
   :root:not([data-theme]) .guess-display { background: rgba(22, 54, 65, .9); color: #f8f3e8; }
 }
 

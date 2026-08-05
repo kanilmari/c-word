@@ -15,6 +15,20 @@ const crossingLevel: LevelData = {
   bonusWords: []
 }
 
+const interruptedPrefixLevel: LevelData = {
+  id: 'interrupted-prefix',
+  title: 'Testi',
+  place: 'Testipaikka',
+  letters: ['S', 'A', 'L', 'I', 'T'],
+  grid: { rows: 4, columns: 5 },
+  words: [
+    { answer: 'SALI', row: 0, column: 0, direction: 'vertical' },
+    { answer: 'SALA', row: 0, column: 0, direction: 'horizontal' },
+    { answer: 'LISTA', row: 2, column: 0, direction: 'horizontal' }
+  ],
+  bonusWords: []
+}
+
 describe('ristikon luonnoskorostukset', () => {
   it('korostaa löytymättömästä sanasta vain risteyksessä jo näkyvän alkukirjaimen', () => {
     const matches = draftMatchCells(crossingLevel, ['AITO'], [], 'AIKA')
@@ -23,6 +37,16 @@ describe('ristikon luonnoskorostukset', () => {
 
   it('ei paljasta täysin piilossa olevan sanan ruutuja', () => {
     const matches = draftMatchCells(crossingLevel, [], [], 'AIKA')
+    expect(matches.size).toBe(0)
+  })
+
+  it('katkaisee korostuksen ensimmäiseen piiloruutuun eikä korosta myöhempää näkyvää risteystä', () => {
+    const matches = draftMatchCells(interruptedPrefixLevel, ['SALA', 'LISTA'], [], 'SALI')
+    expect([...matches.entries()]).toEqual([['0:0', 'prefix']])
+  })
+
+  it('ei korosta myöhempää risteystä lainkaan, jos sanan ensimmäinen ruutu on piilossa', () => {
+    const matches = draftMatchCells(interruptedPrefixLevel, ['LISTA'], [], 'SALI')
     expect(matches.size).toBe(0)
   })
 

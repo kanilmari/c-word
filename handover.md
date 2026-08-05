@@ -12,7 +12,8 @@ Luovutuksessa keskeneräiseksi merkitty muutoskokonaisuus on toteutettu ja varme
 4. Ylläpitäjätila on oletuksena päällä. Se sallii vapaan kenttänavigoinnin ja maksuttomat vihjeet.
 5. Kirjainkehän keskipainike käyttää risteävien nuolten kuvaketta ja tekstiä `Sekoita`.
 6. Kirjainkehän vetoa voi peruuttaa palaamalla edelliseen kirjainpaikkaan.
-7. Keskeneräinen sana korostaa ristikosta vain jo näkyvän osan: ratkaisemattoman sanan piilokirjaimet eivät paljastu, mutta ratkaistun sanan täytetty alku tai koko sana korostuu. Löydetyt bonus-sanat voi avata pelinäkymästä, ja niiden alkuosumat näytetään jo rakennusvaiheessa niin, että syötetty alku erottuu vielä täyttämättömästä lopusta.
+7. Keskeneräinen sana korostaa ristikosta vain sanan alusta yhtäjaksoisesti näkyvän osan. Korostus katkeaa ensimmäiseen piiloruutuun, joten sen jälkeiset näkyvät risteyskirjaimet eivät paljasta sanaa; ratkaistun sanan täytetty alku tai koko sana korostuu. Löydetyt bonus-sanat voi avata pelinäkymästä, ja niiden alkuosumat näytetään jo rakennusvaiheessa niin, että syötetty alku erottuu vielä täyttämättömästä lopusta.
+8. Kirjainkehän ja rajatun näppäimistön kirjain loistaa vihreänä, kun kaikki sillä alkavat ristikkosanat on ratkaistu. Tila ei estä kirjaimen käyttöä bonussanoihin, ja tekstikontrasti vaihtuu teeman taustan mukaan.
 
 ## Lopulliset kentät
 

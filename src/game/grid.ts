@@ -52,10 +52,10 @@ export function draftMatchCells(
   level.words.forEach((word) => {
     if (!word.answer.startsWith(normalizedDraft)) return
     const match: DraftMatch = solvedWords.includes(word.answer) && word.answer === normalizedDraft ? 'word' : 'prefix'
-    cellsForWord(word).slice(0, normalizedDraft.length).forEach(({ key }) => {
-      if (!visible.has(key)) return
+    for (const { key } of cellsForWord(word).slice(0, normalizedDraft.length)) {
+      if (!visible.has(key)) break
       if (match === 'word' || !matches.has(key)) matches.set(key, match)
-    })
+    }
   })
   return matches
 }

@@ -49,6 +49,29 @@ test('kirjainkehä muodostaa sanan ja peruuttaa edelliseen kirjaimeen vedettäes
   await page.mouse.up()
 })
 
+test('ristikon luonnoskorostus katkeaa ensimmäiseen piilokirjaimeen', async ({ page }) => {
+  await page.goto('/')
+  await page.getByRole('button', { name: 'Seuraava kenttä' }).click()
+  await page.getByRole('button', { name: 'Seuraava kenttä' }).click()
+  await expect(page.getByRole('heading', { name: 'Tyyni ilta' })).toBeVisible()
+
+  await page.getByRole('button', { name: 'Avaa asetukset' }).click()
+  await page.getByRole('button', { name: 'Näppäimistö' }).click()
+  await page.getByRole('button', { name: 'Sulje asetukset' }).click()
+
+  const positions = new Map([['P', 0], ['E', 1], ['L', 2], ['A', 3], ['S', 4], ['I', 5], ['T', 6]])
+  const enter = async (word: string, submit = true) => {
+    for (const letter of word) await page.getByTestId(`key-${letter}-${positions.get(letter)}`).click()
+    if (submit) await page.getByRole('button', { name: 'Hyväksy' }).click()
+  }
+
+  for (const word of ['LISTA', 'PILA', 'LASITE', 'LAPSI']) await enter(word)
+  await enter('SAPELI', false)
+
+  await expect(page.getByText('SAPELI', { exact: true })).toBeVisible()
+  await expect(page.locator('[data-draft-match]')).toHaveCount(0)
+})
+
 test('ratkaistu sana, bonus-sana ja edistyminen säilyvät päivityksessä', async ({ page }) => {
   await page.goto('/')
   await expect(page.getByRole('heading', { name: 'Aamun valo' })).toBeVisible()
@@ -100,6 +123,35 @@ test('ratkaistu sana, bonus-sana ja edistyminen säilyvät päivityksessä', asy
   await expect(page.getByLabel('Bonuspisteet 47 / 100')).toBeVisible()
   await expect(page.getByRole('button', { name: 'Näytä löydetyt bonussanat (1)' })).toBeVisible()
   await expect(page.getByTestId('limited-keyboard')).toBeVisible()
+})
+
+test('valmis ristikon alkukirjain loistaa kontrastikkaasti molemmissa syöttötavoissa', async ({ page }) => {
+  await page.goto('/')
+  await page.getByRole('button', { name: 'Avaa asetukset' }).click()
+  await page.getByRole('button', { name: 'Näppäimistö' }).click()
+  await page.getByRole('button', { name: 'Vaalea' }).click()
+  await page.getByRole('button', { name: 'Sulje asetukset' }).click()
+
+  for (const [letter, occurrence] of [['N', 2], ['O', 3], ['S', 0], ['T', 6], ['A', 1], ['A', 5]] as const) {
+    await page.getByTestId(`key-${letter}-${occurrence}`).click()
+  }
+  await page.getByRole('button', { name: 'Hyväksy' }).click()
+
+  const keyboardN = page.getByTestId('key-N-2')
+  await expect(keyboardN).toHaveAttribute('data-crossword-initial-complete', 'true')
+  await expect(keyboardN).toHaveAttribute('aria-label', 'Lisää kirjain N, kaikki tällä kirjaimella alkavat ristikkosanat ratkaistu')
+  await expect(keyboardN).toHaveCSS('background-color', 'rgb(185, 241, 210)')
+  await expect(keyboardN).toHaveCSS('color', 'rgb(16, 59, 44)')
+
+  await page.getByRole('button', { name: 'Avaa asetukset' }).click()
+  await page.getByRole('button', { name: 'Tumma' }).click()
+  await page.getByRole('button', { name: 'Kirjainkehä' }).click()
+  await page.getByRole('button', { name: 'Sulje asetukset' }).click()
+
+  const wheelN = page.locator('.letter-node[data-letter="N"]')
+  await expect(wheelN).toHaveAttribute('data-crossword-initial-complete', 'true')
+  await expect(wheelN).toHaveCSS('background-color', 'rgb(21, 88, 68)')
+  await expect(wheelN).toHaveCSS('color', 'rgb(244, 255, 249)')
 })
 
 test('ylläpitäjätila on oletuksena aktiivinen ja sallii vapaan kenttäliikkumisen sekä vihjeen', async ({ page }) => {

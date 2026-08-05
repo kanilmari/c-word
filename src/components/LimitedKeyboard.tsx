@@ -2,12 +2,13 @@ import { useEffect, useMemo, useState } from 'react'
 
 interface LimitedKeyboardProps {
   letters: string[]
+  completedInitials: ReadonlySet<string>
   disabled?: boolean
   onDraftChange: (word: string) => void
   onSubmit: (word: string) => void
 }
 
-export function LimitedKeyboard({ letters, disabled, onDraftChange, onSubmit }: LimitedKeyboardProps) {
+export function LimitedKeyboard({ letters, completedInitials, disabled, onDraftChange, onSubmit }: LimitedKeyboardProps) {
   const slots = useMemo(() => letters.map((letter, id) => ({ letter, id })), [letters])
   const [selected, setSelected] = useState<number[]>([])
   const draft = selected.map((id) => slots[id].letter).join('')
@@ -31,19 +32,23 @@ export function LimitedKeyboard({ letters, disabled, onDraftChange, onSubmit }: 
   return (
     <div className={`limited-keyboard${disabled ? ' is-disabled' : ''}`} data-testid="limited-keyboard">
       <div className="limited-keyboard__letters">
-        {slots.map(({ id, letter }) => (
-          <button
-            type="button"
-            key={id}
-            disabled={disabled || selected.includes(id)}
-            className={selected.includes(id) ? 'is-used' : ''}
-            onClick={() => change([...selected, id])}
-            data-testid={`key-${letter}-${id}`}
-            aria-label={`Lisää kirjain ${letter}`}
-          >
-            {letter}
-          </button>
-        ))}
+        {slots.map(({ id, letter }) => {
+          const initialComplete = completedInitials.has(letter)
+          return (
+            <button
+              type="button"
+              key={id}
+              disabled={disabled || selected.includes(id)}
+              className={`${initialComplete ? 'is-crossword-initial-complete' : ''}${selected.includes(id) ? ' is-used' : ''}`}
+              onClick={() => change([...selected, id])}
+              data-testid={`key-${letter}-${id}`}
+              data-crossword-initial-complete={initialComplete || undefined}
+              aria-label={`Lisää kirjain ${letter}${initialComplete ? ', kaikki tällä kirjaimella alkavat ristikkosanat ratkaistu' : ''}`}
+            >
+              {letter}
+            </button>
+          )
+        })}
       </div>
       <div className="limited-keyboard__actions">
         <button type="button" onClick={() => change(selected.slice(0, -1))} disabled={disabled || selected.length === 0}>Poista</button>

@@ -8,6 +8,7 @@ interface LetterNode {
 
 interface LetterWheelProps {
   letters: string[]
+  completedInitials: ReadonlySet<string>
   allowRepeatedNode: boolean
   disabled?: boolean
   onDraftChange: (word: string) => void
@@ -19,7 +20,7 @@ const positionFor = (index: number, count: number) => {
   return { x: 50 + Math.cos(angle) * 36, y: 50 + Math.sin(angle) * 36 }
 }
 
-export function LetterWheel({ letters, allowRepeatedNode, disabled, onDraftChange, onSubmit }: LetterWheelProps) {
+export function LetterWheel({ letters, completedInitials, allowRepeatedNode, disabled, onDraftChange, onSubmit }: LetterWheelProps) {
   const [nodes, setNodes] = useState<LetterNode[]>(() => letters.map((letter, id) => ({ letter, id })))
   const [selected, setSelected] = useState<number[]>([])
   const selectedRef = useRef<number[]>([])
@@ -125,9 +126,10 @@ export function LetterWheel({ letters, allowRepeatedNode, disabled, onDraftChang
       </svg>
       {nodes.map((node, index) => {
         const position = positionFor(index, nodes.length)
+        const initialComplete = completedInitials.has(node.letter)
         return (
           <button
-            className={`letter-node${selected.includes(node.id) ? ' is-selected' : ''}`}
+            className={`letter-node${initialComplete ? ' is-crossword-initial-complete' : ''}${selected.includes(node.id) ? ' is-selected' : ''}`}
             type="button"
             key={node.id}
             ref={(element) => {
@@ -136,8 +138,9 @@ export function LetterWheel({ letters, allowRepeatedNode, disabled, onDraftChang
             }}
             style={{ left: `${position.x}%`, top: `${position.y}%` }}
             onPointerDown={(event) => begin(event, node.id)}
-            aria-label={`Kirjain ${node.letter}`}
+            aria-label={`Kirjain ${node.letter}${initialComplete ? ', kaikki tällä kirjaimella alkavat ristikkosanat ratkaistu' : ''}`}
             data-letter={node.letter}
+            data-crossword-initial-complete={initialComplete || undefined}
           >
             {node.letter}
           </button>
