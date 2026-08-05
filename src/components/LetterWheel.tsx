@@ -27,7 +27,7 @@ export function LetterWheel({ letters, completedInitials, allowRepeatedNode, dis
   const pointerId = useRef<number | undefined>(undefined)
   const lastHovered = useRef<number | null>(null)
   const wheelRef = useRef<HTMLDivElement>(null)
-  const nodeRefs = useRef(new Map<number, HTMLButtonElement>())
+  const hitRefs = useRef(new Map<number, HTMLButtonElement>())
 
   useEffect(() => {
     setNodes(letters.map((letter, id) => ({ letter, id })))
@@ -69,10 +69,12 @@ export function LetterWheel({ letters, completedInitials, allowRepeatedNode, dis
     if (pointerId.current !== event.pointerId) return
     let hovered: number | null = null
     let closest = Number.POSITIVE_INFINITY
-    nodeRefs.current.forEach((element, id) => {
+    hitRefs.current.forEach((element, id) => {
       const rect = element.getBoundingClientRect()
+      const inside = event.clientX >= rect.left && event.clientX <= rect.right
+        && event.clientY >= rect.top && event.clientY <= rect.bottom
       const distance = Math.hypot(event.clientX - (rect.left + rect.width / 2), event.clientY - (rect.top + rect.height / 2))
-      if (distance <= rect.width * 0.62 && distance < closest) {
+      if (inside && distance < closest) {
         hovered = id
         closest = distance
       }
@@ -133,8 +135,8 @@ export function LetterWheel({ letters, completedInitials, allowRepeatedNode, dis
             type="button"
             key={node.id}
             ref={(element) => {
-              if (element) nodeRefs.current.set(node.id, element)
-              else nodeRefs.current.delete(node.id)
+              if (element) hitRefs.current.set(node.id, element)
+              else hitRefs.current.delete(node.id)
             }}
             style={{ left: `${position.x}%`, top: `${position.y}%` }}
             onPointerDown={(event) => begin(event, node.id)}
@@ -142,7 +144,9 @@ export function LetterWheel({ letters, completedInitials, allowRepeatedNode, dis
             data-letter={node.letter}
             data-crossword-initial-complete={initialComplete || undefined}
           >
-            {node.letter}
+            <span className="letter-node__glyph">
+              {node.letter}
+            </span>
           </button>
         )
       })}

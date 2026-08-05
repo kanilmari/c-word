@@ -15,6 +15,21 @@ test('kirjainkehä muodostaa sanan ja peruuttaa edelliseen kirjaimeen vedettäes
     }
   }
 
+  const haloPoint = async (letter: string) => {
+    const hitBox = await wheel.locator(`.letter-node[data-letter="${letter}"]`).boundingBox()
+    if (!hitBox) throw new Error(`Kirjaimen ${letter} osuma-aluetta ei saatu.`)
+    return {
+      x: hitBox.x + hitBox.width / 2,
+      y: hitBox.y - 6
+    }
+  }
+
+  const inactiveStart = await haloPoint('M')
+  await page.mouse.move(inactiveStart.x, inactiveStart.y)
+  await page.mouse.down()
+  await page.mouse.up()
+  await expect(page.locator('.guess-display__word')).toHaveText('Muodosta sana')
+
   const start = point(4)
   await page.mouse.move(start.x, start.y)
   await page.mouse.down()
@@ -24,6 +39,10 @@ test('kirjainkehä muodostaa sanan ja peruuttaa edelliseen kirjaimeen vedettäes
   }
   await expect(page.getByText('MATS', { exact: true })).toBeVisible()
   await expect(page.locator('[data-draft-match]')).toHaveCount(0)
+
+  const inactivePrevious = await haloPoint('T')
+  await page.mouse.move(inactivePrevious.x, inactivePrevious.y, { steps: 4 })
+  await expect(page.getByText('MATS', { exact: true })).toBeVisible()
 
   const previous = point(6)
   await page.mouse.move(previous.x, previous.y, { steps: 4 })
@@ -150,7 +169,7 @@ test('valmis ristikon alkukirjain loistaa kontrastikkaasti molemmissa syöttöta
 
   const wheelN = page.locator('.letter-node[data-letter="N"]')
   await expect(wheelN).toHaveAttribute('data-crossword-initial-complete', 'true')
-  await expect(wheelN).toHaveCSS('background-color', 'rgb(21, 88, 68)')
+  await expect.poll(() => wheelN.evaluate((element) => getComputedStyle(element, '::before').backgroundColor)).toBe('rgb(21, 88, 68)')
   await expect(wheelN).toHaveCSS('color', 'rgb(244, 255, 249)')
 })
 
