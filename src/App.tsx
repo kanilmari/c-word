@@ -9,7 +9,6 @@ import { LimitedKeyboard } from './components/LimitedKeyboard'
 import { SettingsSheet } from './components/SettingsSheet'
 import { TopBar } from './components/TopBar'
 import { UpdatePrompt } from './components/UpdatePrompt'
-import { completedCrosswordInitials } from './game/engine'
 import { useGame } from './hooks/useGame'
 
 export default function App() {
@@ -23,7 +22,6 @@ export default function App() {
   }
 
   const { level, progress, save } = game
-  const completedInitials = completedCrosswordInitials(level, progress.solvedWords)
   return (
     <main className="game-shell">
       <div className="landscape" aria-hidden="true"><i className="sun"/><i className="island island--far"/><i className="island island--near"/><i className="water-line water-line--one"/><i className="water-line water-line--two"/></div>
@@ -63,14 +61,13 @@ export default function App() {
             <LetterWheel
               key={level.id}
               letters={level.letters}
-              completedInitials={completedInitials}
               allowRepeatedNode={level.allowRepeatedLetterNode ?? false}
               disabled={game.complete}
               onDraftChange={handleDraft}
               onSubmit={game.submitGuess}
             />
           ) : (
-            <LimitedKeyboard key={level.id} letters={level.letters} completedInitials={completedInitials} disabled={game.complete} onDraftChange={handleDraft} onSubmit={game.submitGuess} />
+            <LimitedKeyboard key={level.id} letters={level.letters} disabled={game.complete} onDraftChange={handleDraft} onSubmit={game.submitGuess} />
           )}
         </section>
 

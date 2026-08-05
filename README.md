@@ -9,7 +9,6 @@ C-Word on mobiili ensin suunniteltu suomalainen sanaristikkopelin MVP. Sama Reac
 - keskeneräistä kirjainjonoa vastaavien, sanan alusta yhtäjaksoisesti näkyvien ristikkoruutujen korostus paljastamatta myöhempiä risteyskirjaimia
 - Pointer Events -pohjainen kirjainkehä hiirelle ja kosketukselle; vain näkyvä kirjainmerkki toimii valinnan ja peruutuksen osuma-alueena
 - valintaviiva, kirjainpaikkojen yksilöinti ja kirjainten sekoitus
-- vihreänä loistava alkukirjain, kun kaikki sillä alkavat ristikkosanat on ratkaistu; bonussanoja voi silti muodostaa
 - vaihtoehtoinen rajattu näppäimistö poisto-, tyhjennys- ja hyväksymistoiminnoilla
 - helposti tunnistettavat ristikkosanat sekä kaikki kentän kirjaimista muodostettavat Nykysuomen sanalistan sanat kerran palkittavina bonus-sanoina
 - kenttäkohtainen löydettyjen bonussanojen luettelo sekä alkuosan perusteella täydentyvä muistutus jo löydetystä bonussanasta

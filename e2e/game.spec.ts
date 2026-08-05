@@ -144,35 +144,6 @@ test('ratkaistu sana, bonus-sana ja edistyminen säilyvät päivityksessä', asy
   await expect(page.getByTestId('limited-keyboard')).toBeVisible()
 })
 
-test('valmis ristikon alkukirjain loistaa kontrastikkaasti molemmissa syöttötavoissa', async ({ page }) => {
-  await page.goto('/')
-  await page.getByRole('button', { name: 'Avaa asetukset' }).click()
-  await page.getByRole('button', { name: 'Näppäimistö' }).click()
-  await page.getByRole('button', { name: 'Vaalea' }).click()
-  await page.getByRole('button', { name: 'Sulje asetukset' }).click()
-
-  for (const [letter, occurrence] of [['N', 2], ['O', 3], ['S', 0], ['T', 6], ['A', 1], ['A', 5]] as const) {
-    await page.getByTestId(`key-${letter}-${occurrence}`).click()
-  }
-  await page.getByRole('button', { name: 'Hyväksy' }).click()
-
-  const keyboardN = page.getByTestId('key-N-2')
-  await expect(keyboardN).toHaveAttribute('data-crossword-initial-complete', 'true')
-  await expect(keyboardN).toHaveAttribute('aria-label', 'Lisää kirjain N, kaikki tällä kirjaimella alkavat ristikkosanat ratkaistu')
-  await expect(keyboardN).toHaveCSS('background-color', 'rgb(185, 241, 210)')
-  await expect(keyboardN).toHaveCSS('color', 'rgb(16, 59, 44)')
-
-  await page.getByRole('button', { name: 'Avaa asetukset' }).click()
-  await page.getByRole('button', { name: 'Tumma' }).click()
-  await page.getByRole('button', { name: 'Kirjainkehä' }).click()
-  await page.getByRole('button', { name: 'Sulje asetukset' }).click()
-
-  const wheelN = page.locator('.letter-node[data-letter="N"]')
-  await expect(wheelN).toHaveAttribute('data-crossword-initial-complete', 'true')
-  await expect.poll(() => wheelN.evaluate((element) => getComputedStyle(element, '::before').backgroundColor)).toBe('rgb(21, 88, 68)')
-  await expect(wheelN).toHaveCSS('color', 'rgb(244, 255, 249)')
-})
-
 test('ylläpitäjätila on oletuksena aktiivinen ja sallii vapaan kenttäliikkumisen sekä vihjeen', async ({ page }) => {
   await page.goto('/')
   await expect(page.getByText('YLLÄPITÄJÄ')).toBeVisible()

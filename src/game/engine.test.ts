@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest'
 import { levels } from '../data/levels'
-import { completedCrosswordInitials, emptyProgress, evaluateGuess, isLevelComplete } from './engine'
+import { emptyProgress, evaluateGuess, isLevelComplete } from './engine'
 import { canBuildWord, normalizeWord } from './normalize'
 
 const level = levels[0]
@@ -48,18 +48,6 @@ describe('arvauksen tarkistus', () => {
     const progress = { ...emptyProgress(), solvedWords: level.words.map(({ answer }) => answer) }
     expect(isLevelComplete(level, progress)).toBe(true)
     expect(isLevelComplete(level, { ...progress, solvedWords: progress.solvedWords.slice(1) })).toBe(false)
-  })
-
-  it('merkitsee alkukirjaimen valmiiksi vasta kun kaikki sillä alkavat ristikkosanat on ratkaistu', () => {
-    const mWords = level.words.filter(({ answer }) => answer.startsWith('M')).map(({ answer }) => answer)
-
-    expect(completedCrosswordInitials(level, mWords.slice(0, -1))).not.toContain('M')
-    expect(completedCrosswordInitials(level, mWords)).toContain('M')
-  })
-
-  it('ei merkitse kirjainta, jolla ei ala yhtään ristikkosanaa', () => {
-    expect(level.letters).toContain('T')
-    expect(completedCrosswordInitials(level, level.words.map(({ answer }) => answer))).not.toContain('T')
   })
 })
 

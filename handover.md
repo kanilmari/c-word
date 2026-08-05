@@ -13,8 +13,7 @@ Luovutuksessa keskeneräiseksi merkitty muutoskokonaisuus on toteutettu ja varme
 5. Kirjainkehän keskipainike käyttää risteävien nuolten kuvaketta ja tekstiä `Sekoita`.
 6. Kirjainkehän vetoa voi peruuttaa palaamalla edelliseen kirjainpaikkaan.
 7. Keskeneräinen sana korostaa ristikosta vain sanan alusta yhtäjaksoisesti näkyvän osan. Korostus katkeaa ensimmäiseen piiloruutuun, joten sen jälkeiset näkyvät risteyskirjaimet eivät paljasta sanaa; ratkaistun sanan täytetty alku tai koko sana korostuu. Löydetyt bonus-sanat voi avata pelinäkymästä, ja niiden alkuosumat näytetään jo rakennusvaiheessa niin, että syötetty alku erottuu vielä täyttämättömästä lopusta.
-8. Kirjainkehän ja rajatun näppäimistön kirjain loistaa vihreänä, kun kaikki sillä alkavat ristikkosanat on ratkaistu. Tila ei estä kirjaimen käyttöä bonussanoihin, ja tekstikontrasti vaihtuu teeman taustan mukaan.
-9. Kirjainkehän pyöreiden kirjainpainikkeiden läpinäkyvä ympäristö ja kehän keskialue ovat vedolle neutraaleja. Valinta tai peruutus tapahtuu vain näkyvään kirjainmerkkiin osuttaessa.
+8. Kirjainkehän pyöreiden kirjainpainikkeiden läpinäkyvä ympäristö ja kehän keskialue ovat vedolle neutraaleja. Valinta tai peruutus tapahtuu vain näkyvään kirjainmerkkiin osuttaessa.
 
 ## Lopulliset kentät
 
