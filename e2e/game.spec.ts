@@ -1,6 +1,6 @@
 import { expect, test } from '@playwright/test'
 
-test('kirjainkehä muodostaa sanan Pointer Events -vedolla', async ({ page }) => {
+test('kirjainkehä muodostaa sanan ja peruuttaa edelliseen kirjaimeen vedettäessä', async ({ page }) => {
   await page.goto('/')
   const wheel = page.getByTestId('letter-wheel')
   await expect(wheel).toBeVisible()
@@ -18,10 +18,18 @@ test('kirjainkehä muodostaa sanan Pointer Events -vedolla', async ({ page }) =>
   const start = point(4)
   await page.mouse.move(start.x, start.y)
   await page.mouse.down()
-  for (const index of [5, 6, 3]) {
+  for (const index of [5, 6, 0]) {
     const next = point(index)
     await page.mouse.move(next.x, next.y, { steps: 4 })
   }
+  await expect(page.getByText('MATS', { exact: true })).toBeVisible()
+
+  const previous = point(6)
+  await page.mouse.move(previous.x, previous.y, { steps: 4 })
+  await expect(page.getByText('MAT', { exact: true })).toBeVisible()
+
+  const last = point(3)
+  await page.mouse.move(last.x, last.y, { steps: 4 })
   await page.mouse.up()
 
   await expect(page.getByRole('grid', { name: 'Sanaristikko, 1 / 14 sanaa ratkaistu' })).toBeVisible()

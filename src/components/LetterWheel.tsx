@@ -45,8 +45,12 @@ export function LetterWheel({ letters, allowRepeatedNode, disabled, onDraftChang
     onDraftChange(wordFor(next))
   }
 
-  const appendNode = (id: number) => {
+  const updateSelection = (id: number) => {
     const current = selectedRef.current
+    if (current.length >= 2 && current[current.length - 2] === id) {
+      applySelection(current.slice(0, -1))
+      return
+    }
     if (!allowRepeatedNode && current.includes(id)) return
     applySelection([...current, id])
   }
@@ -76,7 +80,7 @@ export function LetterWheel({ letters, allowRepeatedNode, disabled, onDraftChang
       lastHovered.current = null
       return
     }
-    if (hovered !== lastHovered.current) appendNode(hovered)
+    if (hovered !== lastHovered.current) updateSelection(hovered)
     lastHovered.current = hovered
   }
 
