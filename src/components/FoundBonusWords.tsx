@@ -11,7 +11,12 @@ export function FoundBonusWords({ words, draft }: FoundBonusWordsProps) {
   const [open, setOpen] = useState(false)
   const sortedWords = useMemo(() => [...words].sort((left, right) => left.localeCompare(right, 'fi')), [words])
   const normalizedDraft = normalizeWord(draft)
-  const duplicateDraft = normalizedDraft && words.includes(normalizedDraft) ? normalizedDraft : undefined
+  const matchingWords = normalizedDraft ? sortedWords.filter((word) => word.startsWith(normalizedDraft)) : []
+  const exactDuplicate = matchingWords.find((word) => word === normalizedDraft)
+  const showMatches = matchingWords.length > 0
+  const panelVisible = open || showMatches
+  const shownWords = showMatches ? matchingWords : sortedWords
+  const matchSummary = matchingWords.join(', ')
 
   useEffect(() => {
     if (!open) return
@@ -23,28 +28,41 @@ export function FoundBonusWords({ words, draft }: FoundBonusWordsProps) {
   }, [open])
 
   return (
-    <div className={`found-bonus${duplicateDraft ? ' is-duplicate' : ''}`}>
+    <div className={`found-bonus${showMatches ? ' is-match' : ''}`}>
       <button
         className="found-bonus__toggle"
         type="button"
         onClick={() => setOpen((current) => !current)}
         disabled={words.length === 0}
-        aria-expanded={open}
-        aria-label={duplicateDraft ? `Jo löydetty bonus-sana ${duplicateDraft}` : `Näytä löydetyt bonussanat (${words.length})`}
+        aria-expanded={panelVisible}
+        aria-label={exactDuplicate
+          ? `Jo löydetty bonus-sana ${exactDuplicate}`
+          : showMatches
+            ? `Löydetty bonus-sana alkaa ${normalizedDraft}: ${matchSummary}`
+            : `Näytä löydetyt bonussanat (${words.length})`}
       >
         <SparkIcon />
-        <span>{duplicateDraft ? 'Löydetty' : 'Bonus'}</span>
-        <small>{duplicateDraft ?? words.length}</small>
+        <span>{showMatches ? 'Löydetty' : 'Bonus'}</span>
+        <small>{showMatches ? `${normalizedDraft}${exactDuplicate ? '' : '…'}` : words.length}</small>
       </button>
 
-      {open && (
-        <section className="found-bonus__panel" role="dialog" aria-label="Löydetyt bonussanat">
+      {panelVisible && (
+        <section className="found-bonus__panel" role="region" aria-label="Löydetyt bonussanat" aria-live={showMatches ? 'polite' : undefined}>
           <header>
-            <strong>Löydetyt bonussanat</strong>
-            <button type="button" onClick={() => setOpen(false)} aria-label="Sulje löydetyt bonussanat"><CloseIcon /></button>
+            <strong>{showMatches ? 'Löydetty bonus alkaa näin' : 'Löydetyt bonussanat'}</strong>
+            {open && <button type="button" onClick={() => setOpen(false)} aria-label="Sulje löydetyt bonussanat"><CloseIcon /></button>}
           </header>
           <div className="found-bonus__list">
-            {sortedWords.map((word) => <span className={word === duplicateDraft ? 'is-current' : ''} key={word}>{word}</span>)}
+            {shownWords.map((word) => {
+              const enteredLength = showMatches ? normalizedDraft.length : word.length
+              const entered = word.slice(0, enteredLength)
+              const remaining = word.slice(enteredLength)
+              return (
+                <span className="found-bonus__word" key={word} aria-label={showMatches ? `Löydetty bonus-sana ${word}, valittu alku ${entered}` : word}>
+                  <b>{entered}</b><i>{remaining}</i>
+                </span>
+              )
+            })}
           </div>
         </section>
       )}

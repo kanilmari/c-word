@@ -1,4 +1,5 @@
 import type { GridCell, LevelData, LevelWord } from '../types/game'
+import { normalizeWord } from './normalize'
 
 export const cellKey = (row: number, column: number) => `${row}:${column}`
 
@@ -33,4 +34,28 @@ export function visibleCellKeys(level: LevelData, solvedWords: readonly string[]
     }
   }
   return visible
+}
+
+export type DraftMatch = 'prefix' | 'word'
+
+export function draftMatchCells(
+  level: LevelData,
+  solvedWords: readonly string[],
+  revealedCells: readonly string[],
+  draft: string
+): Map<string, DraftMatch> {
+  const matches = new Map<string, DraftMatch>()
+  const normalizedDraft = normalizeWord(draft)
+  if (!normalizedDraft) return matches
+  const visible = visibleCellKeys(level, solvedWords, revealedCells)
+
+  level.words.forEach((word) => {
+    if (!word.answer.startsWith(normalizedDraft)) return
+    const match: DraftMatch = solvedWords.includes(word.answer) && word.answer === normalizedDraft ? 'word' : 'prefix'
+    cellsForWord(word).slice(0, normalizedDraft.length).forEach(({ key }) => {
+      if (!visible.has(key)) return
+      if (match === 'word' || !matches.has(key)) matches.set(key, match)
+    })
+  })
+  return matches
 }

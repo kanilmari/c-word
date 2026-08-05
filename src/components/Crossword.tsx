@@ -1,6 +1,5 @@
 import { useMemo } from 'react'
-import { buildGrid, cellsForWord, visibleCellKeys } from '../game/grid'
-import { normalizeWord } from '../game/normalize'
+import { buildGrid, draftMatchCells, visibleCellKeys } from '../game/grid'
 import type { LevelData, LevelProgress } from '../types/game'
 
 interface CrosswordProps {
@@ -9,28 +8,16 @@ interface CrosswordProps {
   draft: string
 }
 
-type DraftMatch = 'prefix' | 'word'
-
 export function Crossword({ level, progress, draft }: CrosswordProps) {
   const cells = useMemo(() => [...buildGrid(level).values()], [level])
   const visible = useMemo(
     () => visibleCellKeys(level, progress.solvedWords, progress.revealedCells),
     [level, progress.revealedCells, progress.solvedWords]
   )
-  const draftMatches = useMemo(() => {
-    const matches = new Map<string, DraftMatch>()
-    const normalizedDraft = normalizeWord(draft)
-    if (!normalizedDraft) return matches
-
-    level.words.forEach((word) => {
-      if (progress.solvedWords.includes(word.answer) || !word.answer.startsWith(normalizedDraft)) return
-      const match: DraftMatch = word.answer === normalizedDraft ? 'word' : 'prefix'
-      cellsForWord(word).slice(0, normalizedDraft.length).forEach(({ key }) => {
-        if (match === 'word' || !matches.has(key)) matches.set(key, match)
-      })
-    })
-    return matches
-  }, [draft, level, progress.solvedWords])
+  const draftMatches = useMemo(
+    () => draftMatchCells(level, progress.solvedWords, progress.revealedCells, draft),
+    [draft, level, progress.revealedCells, progress.solvedWords]
+  )
 
   return (
     <div className="crossword-wrap">

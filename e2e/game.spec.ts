@@ -28,15 +28,25 @@ test('kirjainkehä muodostaa sanan ja peruuttaa edelliseen kirjaimeen vedettäes
   const previous = point(6)
   await page.mouse.move(previous.x, previous.y, { steps: 4 })
   await expect(page.getByText('MAT', { exact: true })).toBeVisible()
-  await expect(page.locator('[data-draft-match="prefix"]')).toHaveCount(3)
+  await expect(page.locator('[data-draft-match]')).toHaveCount(0)
 
   const last = point(3)
   await page.mouse.move(last.x, last.y, { steps: 4 })
-  await expect(page.locator('[data-draft-match="word"]')).toHaveCount(4)
+  await expect(page.locator('[data-draft-match]')).toHaveCount(0)
   await page.mouse.up()
 
   await expect(page.getByRole('grid', { name: 'Sanaristikko, 1 / 14 sanaa ratkaistu' })).toBeVisible()
   await expect(page.getByText('Oikein!')).toBeVisible()
+
+  await page.mouse.move(start.x, start.y)
+  await page.mouse.down()
+  for (const index of [5, 6]) {
+    const next = point(index)
+    await page.mouse.move(next.x, next.y, { steps: 4 })
+  }
+  await expect(page.getByText('MAT', { exact: true })).toBeVisible()
+  await expect(page.locator('[data-draft-match="prefix"]')).toHaveCount(3)
+  await page.mouse.up()
 })
 
 test('ratkaistu sana, bonus-sana ja edistyminen säilyvät päivityksessä', async ({ page }) => {
@@ -71,12 +81,16 @@ test('ratkaistu sana, bonus-sana ja edistyminen säilyvät päivityksessä', asy
   await expect(page.getByLabel('Bonuspisteet 47 / 100')).toBeVisible()
 
   await page.getByRole('button', { name: 'Näytä löydetyt bonussanat (1)' }).click()
-  await expect(page.getByRole('dialog', { name: 'Löydetyt bonussanat' }).getByText('MONTA', { exact: true })).toBeVisible()
+  await expect(page.getByRole('region', { name: 'Löydetyt bonussanat' }).getByText('MONTA', { exact: true })).toBeVisible()
   await page.getByRole('button', { name: 'Sulje löydetyt bonussanat' }).click()
 
   await choose('M', 4)
   await choose('O', 3)
   await choose('N', 2)
+  await expect(page.getByRole('button', { name: 'Löydetty bonus-sana alkaa MON: MONTA' })).toBeVisible()
+  const matchedBonus = page.getByLabel('Löydetty bonus-sana MONTA, valittu alku MON')
+  await expect(matchedBonus.locator('b')).toHaveText('MON')
+  await expect(matchedBonus.locator('i')).toHaveText('TA')
   await choose('T', 6)
   await choose('A', 1)
   await expect(page.getByRole('button', { name: 'Jo löydetty bonus-sana MONTA' })).toBeVisible()

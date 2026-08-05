@@ -446,7 +446,7 @@ input:focus-visible {
 .found-bonus__toggle span { font-size: 10px; font-weight: 850; }
 .found-bonus__toggle small { font-size: 9px; opacity: .75; text-align: left; }
 .found-bonus__toggle:disabled { opacity: .45; cursor: default; }
-.found-bonus.is-duplicate .found-bonus__toggle { color: #56370b; background: linear-gradient(145deg, #ffe8aa, var(--gold)); border-color: #fff0c8; }
+.found-bonus.is-match .found-bonus__toggle { color: #56370b; background: linear-gradient(145deg, #ffe8aa, var(--gold)); border-color: #fff0c8; }
 
 .found-bonus__panel {
   position: absolute;
@@ -468,8 +468,10 @@ input:focus-visible {
 .found-bonus__panel header button { width: 32px; height: 32px; border: 0; border-radius: 50%; display: grid; place-items: center; color: var(--ink); background: var(--cream-deep); cursor: pointer; }
 .found-bonus__panel header svg { width: 17px; }
 .found-bonus__list { display: flex; flex-wrap: wrap; gap: 6px; }
-.found-bonus__list span { padding: 5px 8px; border-radius: 99px; color: var(--ink); background: var(--cream-deep); font-size: 10px; font-weight: 850; letter-spacing: .05em; }
-.found-bonus__list span.is-current { color: #56370b; background: #f4cc76; }
+.found-bonus__word { padding: 5px 8px; border-radius: 99px; color: var(--ink); background: var(--cream-deep); font-size: 10px; letter-spacing: .05em; }
+.found-bonus__word b { font-weight: 950; }
+.found-bonus__word i { font-style: normal; font-weight: 750; opacity: .38; }
+.found-bonus.is-match .found-bonus__word { color: #56370b; background: #f4cc76; }
 
 .letter-wheel {
   width: clamp(205px, min(66vw, 29svh), 300px);
