@@ -1,6 +1,7 @@
 import { useCallback, useState } from 'react'
 import { CompleteDialog } from './components/CompleteDialog'
 import { Crossword } from './components/Crossword'
+import { FoundBonusWords } from './components/FoundBonusWords'
 import { GuessDisplay } from './components/GuessDisplay'
 import { LetterWheel } from './components/LetterWheel'
 import { ChevronLeftIcon, ChevronRightIcon, LightbulbIcon } from './components/icons'
@@ -45,12 +46,14 @@ export default function App() {
           )}
         </section>
 
-        <Crossword level={level} progress={progress} />
+        <Crossword level={level} progress={progress} draft={draft} />
 
         <section className="play-controls">
           <button className="hint-button" type="button" onClick={game.buyHint} disabled={game.complete} aria-label={save.settings.adminMode ? 'Paljasta kirjain maksutta ylläpitäjätilassa' : `Paljasta kirjain, hinta ${level.hintCost ?? 100} bonuspistettä`}>
             <LightbulbIcon /><span>Vihje</span><small>{save.settings.adminMode ? 'Vapaa' : level.hintCost ?? 100}</small>
           </button>
+
+          <FoundBonusWords key={`bonuses-${level.id}`} words={progress.foundBonusWords} draft={draft} />
 
           <GuessDisplay draft={draft} feedback={game.feedback} />
 

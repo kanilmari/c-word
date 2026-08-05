@@ -1,18 +1,36 @@
 import { useMemo } from 'react'
-import { buildGrid, visibleCellKeys } from '../game/grid'
+import { buildGrid, cellsForWord, visibleCellKeys } from '../game/grid'
+import { normalizeWord } from '../game/normalize'
 import type { LevelData, LevelProgress } from '../types/game'
 
 interface CrosswordProps {
   level: LevelData
   progress: LevelProgress
+  draft: string
 }
 
-export function Crossword({ level, progress }: CrosswordProps) {
+type DraftMatch = 'prefix' | 'word'
+
+export function Crossword({ level, progress, draft }: CrosswordProps) {
   const cells = useMemo(() => [...buildGrid(level).values()], [level])
   const visible = useMemo(
     () => visibleCellKeys(level, progress.solvedWords, progress.revealedCells),
     [level, progress.revealedCells, progress.solvedWords]
   )
+  const draftMatches = useMemo(() => {
+    const matches = new Map<string, DraftMatch>()
+    const normalizedDraft = normalizeWord(draft)
+    if (!normalizedDraft) return matches
+
+    level.words.forEach((word) => {
+      if (progress.solvedWords.includes(word.answer) || !word.answer.startsWith(normalizedDraft)) return
+      const match: DraftMatch = word.answer === normalizedDraft ? 'word' : 'prefix'
+      cellsForWord(word).slice(0, normalizedDraft.length).forEach(({ key }) => {
+        if (match === 'word' || !matches.has(key)) matches.set(key, match)
+      })
+    })
+    return matches
+  }, [draft, level, progress.solvedWords])
 
   return (
     <div className="crossword-wrap">
@@ -30,13 +48,16 @@ export function Crossword({ level, progress }: CrosswordProps) {
         {cells.map((cell) => {
           const isVisible = visible.has(cell.key)
           const wasHinted = progress.revealedCells.includes(cell.key)
+          const draftMatch = draftMatches.get(cell.key)
+          const matchLabel = draftMatch === 'word' ? 'Valmis sanaehdotus' : draftMatch === 'prefix' ? 'Sanaehdotuksen alku' : undefined
           return (
             <div
-              className={`crossword__cell${isVisible ? ' is-visible' : ''}${wasHinted ? ' is-hinted' : ''}`}
+              className={`crossword__cell${isVisible ? ' is-visible' : ''}${wasHinted ? ' is-hinted' : ''}${draftMatch ? ` is-draft-${draftMatch}` : ''}`}
               role="gridcell"
               data-testid={`cell-${cell.key}`}
               data-letter={isVisible ? cell.letter : ''}
-              aria-label={isVisible ? cell.letter : 'Tyhjä kirjainruutu'}
+              data-draft-match={draftMatch}
+              aria-label={[isVisible ? cell.letter : 'Tyhjä kirjainruutu', matchLabel].filter(Boolean).join(', ')}
               key={cell.key}
               style={{ gridRow: cell.row + 1, gridColumn: cell.column + 1 }}
             >

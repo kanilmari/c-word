@@ -11,6 +11,8 @@ Luovutuksessa keskeneräiseksi merkitty muutoskokonaisuus on toteutettu ja varme
 3. Viisi ristikkoa generoidaan koneellisesti. Ne ovat 9×9–10×10-kokoisia ja sisältävät 12–15 sanaa.
 4. Ylläpitäjätila on oletuksena päällä. Se sallii vapaan kenttänavigoinnin ja maksuttomat vihjeet.
 5. Kirjainkehän keskipainike käyttää risteävien nuolten kuvaketta ja tekstiä `Sekoita`.
+6. Kirjainkehän vetoa voi peruuttaa palaamalla edelliseen kirjainpaikkaan.
+7. Keskeneräinen sana korostaa ristikosta vastaavat sanan alut tai kokonaisen sanan. Löydetyt bonus-sanat voi avata pelinäkymästä, ja jo löydetty bonus tunnistetaan jo rakennusvaiheessa.
 
 ## Lopulliset kentät
 

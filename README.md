@@ -6,10 +6,12 @@ C-Word on mobiili ensin suunniteltu suomalainen sanaristikkopelin MVP. Sama Reac
 
 - viisi koneellisesti generoitua ja käynnistyksessä validoitavaa 9×9–10×10-kenttää
 - risteävät vaaka- ja pystysanat sekä eri kokoihin skaalautuva ruudukko
+- keskeneräistä kirjainjonoa vastaavien sananalkujen ja kokonaisten ristikkosanojen korostus
 - Pointer Events -pohjainen kirjainkehä hiirelle ja kosketukselle
 - valintaviiva, kirjainpaikkojen yksilöinti ja kirjainten sekoitus
 - vaihtoehtoinen rajattu näppäimistö poisto-, tyhjennys- ja hyväksymistoiminnoilla
 - helposti tunnistettavat ristikkosanat sekä kaikki kentän kirjaimista muodostettavat Nykysuomen sanalistan sanat kerran palkittavina bonus-sanoina
+- kenttäkohtainen löydettyjen bonussanojen luettelo ja välitön varoitus jo löydettyä bonussanaa rakennettaessa
 - kenttäkohtainen vihjehinta ja satunnainen, aiemmin piilossa olleen solun paljastus
 - oletuksena aktiivinen ylläpitäjätila, jossa kenttien välillä voi liikkua vapaasti ja vihjeitä käyttää ilman pisteitä
 - vaalea, tumma ja laitteen teemaa seuraava ulkoasu
